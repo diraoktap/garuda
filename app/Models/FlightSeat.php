@@ -17,4 +17,9 @@ class FlightSeat extends Model
         'class_type',
         'is_available'
     ];
+
+    public function flight()
+    {
+        return $this->belongsTo(Flight::class);
+    }
 }
