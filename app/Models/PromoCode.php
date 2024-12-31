@@ -13,8 +13,8 @@ class PromoCode extends Model
     protected $fillable = [
         'code',
         'discount_type',
-        'logo',
         'discount',
+        'valid_until',
         'is_used'
     ];
 
