@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('code');
             $table->enum('discount_type',['fixed','percentage']);
-            $table->string('logo');
-            $table->dateTime('discount');
+            $table->string('discount');
+            $table->dateTime('valid_until');
             $table->boolean('is_used')->default(false);
             $table->softDeletes();
             $table->timestamps();
