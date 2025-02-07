@@ -12,6 +12,7 @@ class FlightSeat extends Model
     
     protected $fillable = [
         'flight_id',
+        'name',
         'row',
         'column',
         'class_type',

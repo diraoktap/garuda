@@ -16,4 +16,9 @@ class EditFlight extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+    protected function afterSave()
+    {
+        $this->record->generateSeats();
+    }
 }

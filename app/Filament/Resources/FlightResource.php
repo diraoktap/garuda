@@ -21,7 +21,7 @@ use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Wizard;
 use Filament\Forms\Components\Repeater;
-
+use Filament\Tables\Columns\TextColumn;
 
 class FlightResource extends Resource
 {
@@ -38,32 +38,55 @@ class FlightResource extends Resource
                     Wizard\Step::make('Flight Information')
                         ->schema([
                             TextInput::make('flight_number')
-                            ->required()
-                            ->unique(ignoreRecord:true)
-                            ->maxLength(255),
- 
+                                ->required()
+                                ->unique(ignoreRecord:true),
                             Select::make('airline_id')
-                            ->relationship('airline', 'name')
-                            ->required(),
+                                ->relationship('airline', 'name')
+                                ->required(),
                         ]),
                     Wizard\Step::make('Flight Segments')
                         ->schema([                            
-                            Repeater::make('members')
+                            Repeater::make('flight_segments')
+                                ->relationship('segments')
                                 ->schema([
-                                    TextInput::make('name')->required(),
-                                    Select::make('role')
-                                        ->options([
-                                            'member' => 'Member',
-                                            'administrator' => 'Administrator',
-                                            'owner' => 'Owner',
-                                        ])
+                                    TextInput::make('sequence')
+                                        ->required()
+                                        ->numeric(),
+                                    Select::make('airport_id')
+                                        ->relationship('airport', 'name')
+                                        ->required(),
+                                    DateTimePicker::make('time')
                                         ->required(),
                                 ])
-                                ->columns(2)
+                            ->collapsed(false)
+                            ->minItems(1),
                         ]),
                     Wizard\Step::make('Flight Class')
                         ->schema([
-                            // ...
+                            Repeater::make('flight_classes')
+                            ->relationship('classes')
+                            ->schema([
+                                Select::make('class_type')
+                                    ->options([
+                                        'business' => 'Business',
+                                        'economy' => 'Economy',
+                                    ])
+                                    ->required(),
+                                TextInput::make('price')
+                                    ->required()
+                                    ->prefix('IDR')
+                                    ->numeric()
+                                    ->minValue(0),
+                                TextInput::make('total_seats')
+                                    ->required()
+                                    ->numeric()
+                                    ->minValue(1)
+                                    ->label('Total Seats'),
+                                Select::make('facilities')
+                                    ->relationship('facilities', 'name')
+                                    ->required()
+                                    ->multiple(),
+                            ])
                         ]),
                 ])->columnSpan(2)
             ]);
@@ -73,13 +96,25 @@ class FlightResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('flight_number'),
+                TextColumn::make('airline.name'),
+                TextColumn::make('segments')
+                ->label('Route & Duration')
+                ->formatStateUsing(function (Flight $record): string {
+                    $firstSegment = $record->segments->first(); //keberangkatan
+                    $lastSegment = $record->segments->last(); //tujuan
+                    $route = $firstSegment->airport->iata_code . ' - ' . $lastSegment->airport->iata_code; //route dari iata code
+                    $duration = (new \DateTime($firstSegment->time))->format('d F Y H:i') . ' - ' . (new \DateTime($lastSegment->time))->format('d F Y H:i'); // durasi terbang
+                    return $route . ' | ' . $duration;
+                }),
             ])
             ->filters([
                 //
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
