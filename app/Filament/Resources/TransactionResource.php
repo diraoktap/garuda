@@ -40,6 +40,7 @@ class TransactionResource extends Resource
 
                 Section::make('Informasi Penumpang')
                 ->schema([
+                    TextInput::make('number_of_passengers'),
                     TextInput::make('name'),
                     TextInput::make('email'),
                     TextInput::make('phone'),
@@ -54,6 +55,16 @@ class TransactionResource extends Resource
                             TextInput::make('nationality'),
                         ])
                     ]),
+                ]),
+
+                Section::make('Pembayaran')
+                ->schema([
+                    TextInput::make('promo.code'),
+                    TextInput::make('promo.discount_type'),
+                    TextInput::make('promo.discount'),
+                    TextInput::make('payment_status'),
+                    TextInput::make('subtotal'),
+                    TextInput::make('grandtotal'),
                 ]),
             ]);
     }
