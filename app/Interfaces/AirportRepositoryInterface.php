@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Interface;
+namespace App\Interfaces;
 
 interface AirportRepositoryInterface
 {
@@ -9,4 +9,4 @@ interface AirportRepositoryInterface
     public function getAirportBySlug($slug);
 
     public function getAirportByIataCode($iataCode);
-}   
+}

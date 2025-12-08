@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Repositories;
+
 use App\Interfaces\AirportRepositoryInterface;
+use App\Models\Airport;
 
 class AirportRepository implements AirportRepositoryInterface
 {
