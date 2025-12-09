@@ -29,8 +29,8 @@
                     <button type="button" class="dropdown flex items-center gap-4 p-5 first:pl-6 first:border-l-0 last:pr-6 last:border-r-0" data-dropdown-target="#Departure-Dropdown">
                         <img src="assets/images/icons/departure.svg" class="w-[50px] flex shrink-0" alt="icon">
                         <div class="text-left">
-                            <p class="text-sm text-garuda-grey">Departure</p>
-                            <p id="Departure-Label" class="font-semibold text-lg mt-[2px] text-nowrap">Jakarta (CGK)</p>
+                            <p class="text-sm text-garuda-grey">From</p>
+                            <p id="Departure-Label" class="font-semibold text-lg mt-[2px] text-nowrap">Where</p>
                         </div>
                     </button>
                     <div id="Departure-Dropdown" class="dropdown-content hidden absolute z-10 top-full mt-4 h-[232px] rounded-[18px] bg-white border border-[#E8EFF7] overflow-y-scroll custom-scrollbar">
@@ -40,38 +40,12 @@
                                 <input type="radio" name="departure" id="{{ $airport->iata_code }}" class="absolute top-1/2 left-1/2 opacity-0" value="{{ $airport->iata_code }}">
                                 <img src="assets/images/icons/airplane-black.svg" class="flex shrink-0 w-[34px]" alt="icon">
                                 <div class="flex flex-col gap-[2px]">
-                                    <p class="font-semibold">{{ $airport->name }}</p>
-                                    <p class="text-sm text-garuda-grey">{{ $airport->city }}</p>
+                                    <p class="font-semibold">{{ $airport->name }} ({{ $airport->iata_code }})</p>
+                                    <p class="text-sm text-garuda-grey">{{ $airport->city }}, {{ $airport->country }}</p>
                                 </div>
                             </label>
                             <hr class="border-[#E8EFF7]">
                             @endforeach
-                            <!-- <label class="relative flex items-center rounded-[10px] gap-[10px] p-0 has-[:checked]:p-[10px] has-[:checked]:bg-garuda-bg-grey transition-all duration-300">
-                                <input type="radio" name="departure-radio" id="" class="absolute top-1/2 left-1/2 opacity-0">
-                                <img src="assets/images/icons/airplane-black.svg" class="flex shrink-0 w-[34px]" alt="icon">
-                                <div class="flex flex-col gap-[2px]">
-                                    <p class="font-semibold">Angga Capital Airport</p>
-                                    <p class="text-sm text-garuda-grey">Bandung, Indonesia</p>
-                                </div>
-                            </label>
-                            <hr class="border-[#E8EFF7]">
-                            <label class="relative flex items-center rounded-[10px] gap-[10px] p-0 has-[:checked]:p-[10px] has-[:checked]:bg-garuda-bg-grey transition-all duration-300">
-                                <input type="radio" name="departure-radio" id="" class="absolute top-1/2 left-1/2 opacity-0">
-                                <img src="assets/images/icons/airplane-black.svg" class="flex shrink-0 w-[34px]" alt="icon">
-                                <div class="flex flex-col gap-[2px]">
-                                    <p class="font-semibold">Angga Capital Airport</p>
-                                    <p class="text-sm text-garuda-grey">Bandung, Indonesia</p>
-                                </div>
-                            </label>
-                            <hr class="border-[#E8EFF7]">
-                            <label class="relative flex items-center rounded-[10px] gap-[10px] p-0 has-[:checked]:p-[10px] has-[:checked]:bg-garuda-bg-grey transition-all duration-300">
-                                <input type="radio" name="departure-radio" id="" class="absolute top-1/2 left-1/2 opacity-0">
-                                <img src="assets/images/icons/airplane-black.svg" class="flex shrink-0 w-[34px]" alt="icon">
-                                <div class="flex flex-col gap-[2px]">
-                                    <p class="font-semibold">Angga Capital Airport</p>
-                                    <p class="text-sm text-garuda-grey">Bandung, Indonesia</p>
-                                </div>
-                            </label> -->
                         </div>
                     </div>
                 </div>
@@ -79,8 +53,8 @@
                     <button type="button" class="dropdown flex items-center gap-4 p-5 first:pl-6 last:pr-6" data-dropdown-target="#Arrival-Dropdown">
                         <img src="assets/images/icons/departure.svg" class="w-[50px] flex shrink-0" alt="icon">
                         <div class="text-left">
-                            <p class="text-sm text-garuda-grey">Arrival</p>
-                            <p id="Arrival-Label" class="font-semibold text-lg mt-[2px] text-nowrap">Tokyo (HND)</p>
+                            <p class="text-sm text-garuda-grey">To</p>
+                            <p id="Arrival-Label" class="font-semibold text-lg mt-[2px] text-nowrap">Anywhere</p>
                         </div>
                     </button>
                     <div id="Arrival-Dropdown" class="dropdown-content hidden absolute z-10 top-full mt-4 h-[232px] rounded-[18px] bg-white border border-[#E8EFF7] overflow-y-scroll custom-scrollbar">
@@ -90,8 +64,8 @@
                                 <input type="radio" name="arrival" id="" class="absolute top-1/2 left-1/2 opacity-0">
                                 <img src="assets/images/icons/airplane-black.svg" class="flex shrink-0 w-[34px]" alt="icon">
                                 <div class="flex flex-col gap-[2px]">
-                                    <p class="font-semibold">{{ $airport->name }}</p>
-                                    <p class="text-sm text-garuda-grey">{{ $airport->city }}</p>
+                                    <p class="font-semibold">{{ $airport->name }} ({{ $airport->iata_code }})</p>
+                                    <p class="text-sm text-garuda-grey">{{ $airport->city }}, {{ $airport->country }}</p>
                                 </div>
                             </label>
                             <hr class="border-[#E8EFF7]">
@@ -104,7 +78,7 @@
                     <button type="button" id="Date-Button" class="relative flex items-center gap-4 p-5 first:pl-6 last:pr-6">
                         <img src="assets/images/icons/departure.svg" class="w-[50px] flex shrink-0" alt="icon">
                         <div class="text-left">
-                            <p class="text-sm text-garuda-grey">Date</p>
+                            <p class="text-sm text-garuda-grey">Depature Date</p>
                             <p id="Date-Label" class="font-semibold text-lg mt-[2px] text-nowrap"></p>
                         </div>
                     </button>
@@ -113,8 +87,8 @@
                     <button type="button" class="dropdown flex items-center gap-4 p-5 first:pl-6 last:pr-6" data-dropdown-target="#Quantity-Dropdown">
                         <img src="assets/images/icons/departure.svg" class="w-[50px] flex shrink-0" alt="icon">
                         <div class="text-left">
-                            <p class="text-sm text-garuda-grey">Quantity</p>
-                            <p id="Quantity-Label" class="font-semibold text-lg mt-[2px] text-nowrap"><span class="number">1</span> people</p>
+                            <p class="text-sm text-garuda-grey">No. of Passenger</p>
+                            <p id="Quantity-Label" class="font-semibold text-lg mt-[2px] text-nowrap"><span class="number">1</span> Passenger</p>
                         </div>
                     </button>
                     <div id="Quantity-Dropdown" class="dropdown-content hidden absolute z-10 top-full mt-4">
@@ -145,132 +119,22 @@
     </div>
     <div class="swiper !w-full overflow-x-hidden">
         <div class="swiper-wrapper">
+            @foreach($airports as $airport)
             <div class="swiper-slide !w-fit first:ml-[calc(((100%-1280px)/2)+75px-24px)]">
                 <a href="#" class="card">
                     <div class="flex items-end w-[230px] h-[280px] shrink-0 rounded-[30px] bg-white overflow-hidden hover:border-2 hover:border-garuda-blue hover:p-[10px] transition-all duration-300">
-                        <img src="assets/images/thumbnails/thumbnail-1.png" class="w-full h-full object-cover rounded-[30px]" alt="thumbnails">
+                        <img src="{{ asset('storage/' . $airport->image) }}" class="w-full h-full object-cover rounded-[30px]" alt="thumbnails">
                         <div class="absolute flex w-[210px] items-center bottom-[10px] left-[10px] right-[10px] rounded-[20px] p-[10px] gap-[10px] bg-white">
                             <img src="assets/images/icons/global-black.svg" class="w-6 flex shrink-0" alt="icon">
                             <div>
-                                <p class="font-semibold">Dragon Gate</p>
-                                <p class="text-sm text-garuda-grey">Shanghai, China</p>
+                                <p class="font-semibold">{{ $airport->name }} ({{ $airport->iata_code }})</p>
+                                <p class="text-sm text-garuda-grey">{{ $airport->city }}, {{ $airport->country }}</p>
                             </div>
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="swiper-slide !w-fit first:ml-[calc(((100%-1280px)/2)+75px-24px)]">
-                <a href="#" class="card">
-                    <div class="flex items-end w-[230px] h-[280px] shrink-0 rounded-[30px] bg-white overflow-hidden hover:border-2 hover:border-garuda-blue hover:p-[10px] transition-all duration-300">
-                        <img src="assets/images/thumbnails/thumbnail-1.png" class="w-full h-full object-cover rounded-[30px]" alt="thumbnails">
-                        <div class="absolute flex w-[210px] items-center bottom-[10px] left-[10px] right-[10px] rounded-[20px] p-[10px] gap-[10px] bg-white">
-                            <img src="assets/images/icons/global-black.svg" class="w-6 flex shrink-0" alt="icon">
-                            <div>
-                                <p class="font-semibold">Dragon Gate</p>
-                                <p class="text-sm text-garuda-grey">Shanghai, China</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="swiper-slide !w-fit first:ml-[calc(((100%-1280px)/2)+75px-24px)]">
-                <a href="#" class="card">
-                    <div class="flex items-end w-[230px] h-[280px] shrink-0 rounded-[30px] bg-white overflow-hidden hover:border-2 hover:border-garuda-blue hover:p-[10px] transition-all duration-300">
-                        <img src="assets/images/thumbnails/thumbnail-2.png" class="w-full h-full object-cover rounded-[30px]" alt="thumbnails">
-                        <div class="absolute flex w-[210px] items-center bottom-[10px] left-[10px] right-[10px] rounded-[20px] p-[10px] gap-[10px] bg-white">
-                            <img src="assets/images/icons/global-black.svg" class="w-6 flex shrink-0" alt="icon">
-                            <div>
-                                <p class="font-semibold">Dragon Gate</p>
-                                <p class="text-sm text-garuda-grey">Shanghai, China</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="swiper-slide !w-fit first:ml-[calc(((100%-1280px)/2)+75px-24px)]">
-                <a href="#" class="card">
-                    <div class="flex items-end w-[230px] h-[280px] shrink-0 rounded-[30px] bg-white overflow-hidden hover:border-2 hover:border-garuda-blue hover:p-[10px] transition-all duration-300">
-                        <img src="assets/images/thumbnails/thumbnail-3.png" class="w-full h-full object-cover rounded-[30px]" alt="thumbnails">
-                        <div class="absolute flex w-[210px] items-center bottom-[10px] left-[10px] right-[10px] rounded-[20px] p-[10px] gap-[10px] bg-white">
-                            <img src="assets/images/icons/global-black.svg" class="w-6 flex shrink-0" alt="icon">
-                            <div>
-                                <p class="font-semibold">Dragon Gate</p>
-                                <p class="text-sm text-garuda-grey">Shanghai, China</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="swiper-slide !w-fit first:ml-[calc(((100%-1280px)/2)+75px-24px)]">
-                <a href="#" class="card">
-                    <div class="flex items-end w-[230px] h-[280px] shrink-0 rounded-[30px] bg-white overflow-hidden hover:border-2 hover:border-garuda-blue hover:p-[10px] transition-all duration-300">
-                        <img src="assets/images/thumbnails/thumbnail-4.png" class="w-full h-full object-cover rounded-[30px]" alt="thumbnails">
-                        <div class="absolute flex w-[210px] items-center bottom-[10px] left-[10px] right-[10px] rounded-[20px] p-[10px] gap-[10px] bg-white">
-                            <img src="assets/images/icons/global-black.svg" class="w-6 flex shrink-0" alt="icon">
-                            <div>
-                                <p class="font-semibold">Dragon Gate</p>
-                                <p class="text-sm text-garuda-grey">Shanghai, China</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="swiper-slide !w-fit first:ml-[calc(((100%-1280px)/2)+75px-24px)]">
-                <a href="#" class="card">
-                    <div class="flex items-end w-[230px] h-[280px] shrink-0 rounded-[30px] bg-white overflow-hidden hover:border-2 hover:border-garuda-blue hover:p-[10px] transition-all duration-300">
-                        <img src="assets/images/thumbnails/thumbnail-5.png" class="w-full h-full object-cover rounded-[30px]" alt="thumbnails">
-                        <div class="absolute flex w-[210px] items-center bottom-[10px] left-[10px] right-[10px] rounded-[20px] p-[10px] gap-[10px] bg-white">
-                            <img src="assets/images/icons/global-black.svg" class="w-6 flex shrink-0" alt="icon">
-                            <div>
-                                <p class="font-semibold">Dragon Gate</p>
-                                <p class="text-sm text-garuda-grey">Shanghai, China</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="swiper-slide !w-fit first:ml-[calc(((100%-1280px)/2)+75px-24px)]">
-                <a href="#" class="card">
-                    <div class="flex items-end w-[230px] h-[280px] shrink-0 rounded-[30px] bg-white overflow-hidden hover:border-2 hover:border-garuda-blue hover:p-[10px] transition-all duration-300">
-                        <img src="assets/images/thumbnails/thumbnail-1.png" class="w-full h-full object-cover rounded-[30px]" alt="thumbnails">
-                        <div class="absolute flex w-[210px] items-center bottom-[10px] left-[10px] right-[10px] rounded-[20px] p-[10px] gap-[10px] bg-white">
-                            <img src="assets/images/icons/global-black.svg" class="w-6 flex shrink-0" alt="icon">
-                            <div>
-                                <p class="font-semibold">Dragon Gate</p>
-                                <p class="text-sm text-garuda-grey">Shanghai, China</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="swiper-slide !w-fit first:ml-[calc(((100%-1280px)/2)+75px-24px)]">
-                <a href="#" class="card">
-                    <div class="flex items-end w-[230px] h-[280px] shrink-0 rounded-[30px] bg-white overflow-hidden hover:border-2 hover:border-garuda-blue hover:p-[10px] transition-all duration-300">
-                        <img src="assets/images/thumbnails/thumbnail-2.png" class="w-full h-full object-cover rounded-[30px]" alt="thumbnails">
-                        <div class="absolute flex w-[210px] items-center bottom-[10px] left-[10px] right-[10px] rounded-[20px] p-[10px] gap-[10px] bg-white">
-                            <img src="assets/images/icons/global-black.svg" class="w-6 flex shrink-0" alt="icon">
-                            <div>
-                                <p class="font-semibold">Dragon Gate</p>
-                                <p class="text-sm text-garuda-grey">Shanghai, China</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="swiper-slide !w-fit first:ml-[calc(((100%-1280px)/2)+75px-24px)]">
-                <a href="#" class="card">
-                    <div class="flex items-end w-[230px] h-[280px] shrink-0 rounded-[30px] bg-white overflow-hidden hover:border-2 hover:border-garuda-blue hover:p-[10px] transition-all duration-300">
-                        <img src="assets/images/thumbnails/thumbnail-3.png" class="w-full h-full object-cover rounded-[30px]" alt="thumbnails">
-                        <div class="absolute flex w-[210px] items-center bottom-[10px] left-[10px] right-[10px] rounded-[20px] p-[10px] gap-[10px] bg-white">
-                            <img src="assets/images/icons/global-black.svg" class="w-6 flex shrink-0" alt="icon">
-                            <div>
-                                <p class="font-semibold">Dragon Gate</p>
-                                <p class="text-sm text-garuda-grey">Shanghai, China</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
